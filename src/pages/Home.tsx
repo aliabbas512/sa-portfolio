@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             <Box display="flex" flexDirection="column" alignItems="center">
               <Avatar
                 alt="Syed Ali Abbas"
-                src="images/profile.jpg"
+                src="/images/profile.jpg"
                 sx={{
                   width: 300,
                   height: 300,
