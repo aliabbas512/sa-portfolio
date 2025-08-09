@@ -1,10 +1,23 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  useMediaQuery,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { motion, Variants } from "framer-motion";
+import { useTheme } from "@mui/material/styles";
 
 const MotionToolbar = motion(Toolbar);
 const MotionTypography = motion(Typography);
-// const MotionImg = motion.img;
 const MotionButton = motion(Button);
 
 const navItems = [
@@ -33,53 +46,92 @@ const navItemVariants = {
   }),
 };
 
-const Header = () => (
-  <AppBar
-    position="sticky"
-    sx={{
-      backgroundColor: "#A4DB85",
-      color: "#002C77",
-      boxShadow: 3,
-      zIndex: 1100,
-    }}
-  >
-    <MotionToolbar
-      initial="hidden"
-      animate="visible"
-      variants={variants}
+const Header = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  return (
+    <AppBar
+      position="sticky"
+      sx={{
+        backgroundColor: "#A4DB85",
+        color: "#002C77",
+        boxShadow: 3,
+        zIndex: 1100,
+      }}
     >
-      {/* <MotionImg
-        src="/images/logo.png"
-        alt="Logo"
-        style={{ height: 40, marginRight: 10 }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-      /> */}
-      <MotionTypography
-        variant="h6"
-        sx={{ flexGrow: 1, fontWeight: "bold" }}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        Syed Ali Abbas
-      </MotionTypography>
-      {navItems.map((item, index) => (
-        <MotionButton
-          key={item.label}
-          href={item.href}
-          sx={{ color: "#002C77", fontWeight: "bold" }}
-          custom={index}
-          initial="hidden"
-          animate="visible"
-          variants={navItemVariants}
+      <MotionToolbar initial="hidden" animate="visible" variants={variants}>
+        <MotionTypography
+          variant="h6"
+          sx={{
+            flexGrow: 1,
+            fontWeight: "bold",
+            fontSize: isMobile ? "1rem" : "1.25rem",
+          }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {item.label}
-        </MotionButton>
-      ))}
-    </MotionToolbar>
-  </AppBar>
-);
+          Syed Ali Abbas
+        </MotionTypography>
+
+        {isMobile ? (
+          <>
+            <IconButton
+              edge="end"
+              color="inherit"
+              onClick={() => setDrawerOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={() => setDrawerOpen(false)}
+              PaperProps={{
+                sx: {
+                  backgroundColor: "#A4DB85",
+                  color: "#002C77",
+                },
+              }}
+            >
+              <List sx={{ width: 200 }}>
+                {navItems.map((item) => (
+                  <ListItem key={item.label} disablePadding>
+                    <ListItemButton
+                      component="a"
+                      href={item.href}
+                      onClick={() => setDrawerOpen(false)}
+                    >
+                      <ListItemText
+                        primary={item.label}
+                        sx={{ fontWeight: "bold" }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
+          </>
+        ) : (
+          navItems.map((item, index) => (
+            <MotionButton
+              key={item.label}
+              href={item.href}
+              sx={{ color: "#002C77", fontWeight: "bold" }}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={navItemVariants}
+            >
+              {item.label}
+            </MotionButton>
+          ))
+        )}
+      </MotionToolbar>
+    </AppBar>
+  );
+};
 
 export default Header;

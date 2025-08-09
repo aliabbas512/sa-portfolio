@@ -59,27 +59,27 @@ const Home: React.FC = () => {
           </motion.div>
         </Grid>
         {/* About Me Section */}
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={7} alignItems="center" justifyContent="center" sx={{ ml: { xs: 1.5, md: 0 },  mt: { xs: 5, md: 0 } }}>
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <Typography variant="h5" fontWeight="bold" gutterBottom>
+            <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ display: { xs: 'none', md: 'block' }, }}>
               ABOUT ME
             </Typography>
             <Typography variant="body1" fontWeight="bold" sx={{ lineHeight: 2 }}>
-              Experienced web developer with expertise in designing, building,
-              testing, and debugging. Skilled in technologies such as HTML, CSS,
-              Bootstrap, JavaScript, JQuery, React.js, Angular.js, Node.js,
-              Express.js, MongoDB, and OracleDB. Capable of working independently
+              I am a web developer specializing in designing, building, testing, and debugging 
+              modern web applications. Proficient in HTML, CSS, Bootstrap, JavaScript, jQuery, React.js, 
+              Angular.js, Node.js, Express.js, MongoDB, and OracleDB. Capable of working independently 
               on projects while being a reliable and collaborative team member.
             </Typography>
             <Stack
-              direction={{ xs: "column", sm: "row" }}
+              direction="row"
               spacing={2}
               mt={4}
-              alignItems="start"
+              alignItems="center"
+              flexWrap="wrap"
             >
               <Button
                 variant="outlined"

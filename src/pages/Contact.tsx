@@ -37,10 +37,10 @@ const Contact = () => {
       id="contact"
       sx={{
         backgroundColor: "#f5f5f5",
-        minHeight: "120vh",
+        minHeight: { xs: "auto", md: "120vh" },
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: { xs: "flex-start", md: "space-between" },
         py: 8,
         px: { xs: 2, sm: 5, md: 10 },
       }}
@@ -168,6 +168,8 @@ const Contact = () => {
             backgroundColor: "#002C77",
             color: "#A4DB85",
             borderTop: "1px solid #A4DB85",
+            width: "100vw",
+            ml: "calc(-50vw + 50%)",
           }}
         >
           <Typography variant="body2">
