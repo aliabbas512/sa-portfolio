@@ -55,8 +55,8 @@ const Header = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: "#A4DB85",
-        color: "#002C77",
+        backgroundColor: "#0F172A", // Dark blue-gray
+        color: "#F8FAFC", // Near white text
         boxShadow: 3,
         zIndex: 1100,
       }}
@@ -68,6 +68,7 @@ const Header = () => {
             flexGrow: 1,
             fontWeight: "bold",
             fontSize: isMobile ? "1rem" : "1.25rem",
+            color: "#38BDF8", // Accent color for name
           }}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -80,8 +81,8 @@ const Header = () => {
           <>
             <IconButton
               edge="end"
-              color="inherit"
               onClick={() => setDrawerOpen(true)}
+              sx={{ color: "#38BDF8" }} // Accent color
             >
               <MenuIcon />
             </IconButton>
@@ -91,8 +92,8 @@ const Header = () => {
               onClose={() => setDrawerOpen(false)}
               PaperProps={{
                 sx: {
-                  backgroundColor: "#A4DB85",
-                  color: "#002C77",
+                  backgroundColor: "#1E293B", // Secondary background
+                  color: "#F8FAFC",
                 },
               }}
             >
@@ -103,10 +104,18 @@ const Header = () => {
                       component="a"
                       href={item.href}
                       onClick={() => setDrawerOpen(false)}
+                      sx={{
+                        "&:hover": {
+                          backgroundColor: "rgba(56, 189, 248, 0.1)", // Accent hover
+                        },
+                      }}
                     >
                       <ListItemText
                         primary={item.label}
-                        sx={{ fontWeight: "bold" }}
+                        sx={{
+                          fontWeight: "bold",
+                          color: "#F8FAFC",
+                        }}
                       />
                     </ListItemButton>
                   </ListItem>
@@ -119,7 +128,14 @@ const Header = () => {
             <MotionButton
               key={item.label}
               href={item.href}
-              sx={{ color: "#002C77", fontWeight: "bold" }}
+              sx={{
+                color: "#F8FAFC",
+                fontWeight: "bold",
+                "&:hover": {
+                  color: "#38BDF8",
+                  backgroundColor: "rgba(56, 189, 248, 0.1)",
+                },
+              }}
               custom={index}
               initial="hidden"
               animate="visible"

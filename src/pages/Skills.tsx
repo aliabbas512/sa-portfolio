@@ -24,14 +24,15 @@ const skills = [
 ];
 
 const BorderLinearProgress = styled(LinearProgress)(() => ({
-  height: 12,
+  height: 10,
   borderRadius: 10,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#1E293B", // secondary dark slate background for track
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 10,
-    backgroundColor: "#A4DB85",
+    backgroundColor: "#38BDF8", // neon blue accent
+    transition: "all 0.4s ease",
   },
 }));
 
@@ -52,19 +53,28 @@ const Skills: React.FC = () => {
   return (
     <Box
       id="skills"
-      sx={{ backgroundColor: "#002C77", minHeight: "110vh", py: 5, px: 7 }}
+      sx={{
+        backgroundColor: "#0F172A", // theme dark background
+        minHeight: "110vh",
+        py: { xs: 4, sm: 5, md: 6 },
+        px: { xs: 2, sm: 4, md: 7 },
+      }}
     >
       <Typography
         variant="h4"
         align="center"
-        color="white"
         fontWeight="bold"
-        sx={{ py: 5, px: 3 }}
+        color="#38BDF8" // neon blue heading
+        sx={{
+          py: { xs: 3, sm: 4, md: 5 },
+          fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2rem" },
+        }}
         gutterBottom
       >
         Skills & Proficiencies
       </Typography>
-      <Grid container spacing={4} justifyContent="center">
+
+      <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} justifyContent="center">
         {skills.map((skill, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <motion.div
@@ -74,7 +84,15 @@ const Skills: React.FC = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Typography variant="subtitle1" color="white" gutterBottom>
+              <Typography
+                variant="subtitle1"
+                color="#E2E8F0" // light text
+                gutterBottom
+                sx={{
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.05rem" },
+                  fontWeight: 500,
+                }}
+              >
                 {skill.label}
               </Typography>
               <BorderLinearProgress

@@ -36,13 +36,14 @@ const Contact = () => {
     <Box
       id="contact"
       sx={{
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#0F172A", // Dark theme background
         minHeight: { xs: "auto", md: "120vh" },
         display: "flex",
         flexDirection: "column",
         justifyContent: { xs: "flex-start", md: "space-between" },
-        py: 8,
-        px: { xs: 2, sm: 5, md: 10 },
+        py: { xs: 6, sm: 8 },
+        px: { xs: 2, sm: 4, md: 10, lg: 14 },
+        color: "#E2E8F0",
       }}
     >
       {/* Animated Contact Form */}
@@ -56,10 +57,10 @@ const Contact = () => {
           component="form"
           onSubmit={formik.handleSubmit}
           sx={{
-            backgroundColor: "#ffffff",
-            p: 5,
+            backgroundColor: "#1E293B",
+            p: { xs: 3, sm: 4, md: 5 },
             borderRadius: 3,
-            boxShadow: 3,
+            boxShadow: "0 0 20px rgba(0,0,0,0.3)",
             maxWidth: "600px",
             mx: "auto",
             width: "100%",
@@ -68,7 +69,13 @@ const Contact = () => {
           <Typography
             variant="h4"
             align="center"
-            sx={{ color: "#002C77", fontWeight: "bold", mb: 4 }}
+            sx={{
+              color: "#38BDF8", // Neon green accent
+              fontWeight: "bold",
+              mb: { xs: 3, sm: 4 },
+              fontSize: { xs: "1.8rem", sm: "2rem", md: "2.2rem" },
+              fontFamily: "'Inter', sans-serif",
+            }}
             gutterBottom
           >
             Contact Me
@@ -78,6 +85,9 @@ const Contact = () => {
             margin="normal"
             label="Name"
             name="name"
+            variant="filled"
+            InputProps={{ style: { backgroundColor: "#0F172A", color: "#E2E8F0" } }}
+            InputLabelProps={{ style: { color: "#94A3B8" } }}
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -90,6 +100,9 @@ const Contact = () => {
             label="Email"
             name="email"
             type="email"
+            variant="filled"
+            InputProps={{ style: { backgroundColor: "#0F172A", color: "#E2E8F0" } }}
+            InputLabelProps={{ style: { color: "#94A3B8" } }}
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -103,6 +116,9 @@ const Contact = () => {
             rows={4}
             label="Message"
             name="message"
+            variant="filled"
+            InputProps={{ style: { backgroundColor: "#0F172A", color: "#E2E8F0" } }}
+            InputLabelProps={{ style: { color: "#94A3B8" } }}
             value={formik.values.message}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -115,11 +131,14 @@ const Contact = () => {
             variant="contained"
             sx={{
               mt: 3,
-              backgroundColor: "#002C77",
-              color: "#A4DB85",
+              backgroundColor: "#38BDF8",
+              color: "#0F172A",
               fontWeight: "bold",
+              transition: "all 0.3s ease",
               "&:hover": {
-                backgroundColor: "#001f5c",
+                backgroundColor: "#0EA5E9",
+                transform: "translateY(-3px)",
+                boxShadow: "0 0 12px #38BDF8",
               },
             }}
           >
@@ -137,18 +156,9 @@ const Contact = () => {
       >
         <input type="text" name="name" value={formik.values.name} readOnly />
         <input type="email" name="email" value={formik.values.email} readOnly />
-        <input
-          type="text"
-          name="message"
-          value={formik.values.message}
-          readOnly
-        />
+        <input type="text" name="message" value={formik.values.message} readOnly />
         <input type="hidden" name="_captcha" value="false" />
-        <input
-          type="hidden"
-          name="_next"
-          value="https://your-portfolio.com/thank-you"
-        />
+        <input type="hidden" name="_next" value="https://your-portfolio.com/thank-you" />
       </form>
 
       {/* Animated Footer */}
@@ -161,18 +171,17 @@ const Contact = () => {
         <Box
           component="footer"
           sx={{
-            mt: 8,
-            py: 3,
-            px: 2,
+            mt: { xs: 6, sm: 8 },
+            py: { xs: 2, sm: 3 },
+            px: { xs: 2, sm: 4 },
             textAlign: "center",
-            backgroundColor: "#002C77",
-            color: "#A4DB85",
-            borderTop: "1px solid #A4DB85",
-            width: "100vw",
-            ml: "calc(-50vw + 50%)",
+            backgroundColor: "#1E293B",
+            color: "#38BDF8",
+            borderTop: "1px solid #38BDF8",
+            width: "100%",
           }}
         >
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{ fontSize: { xs: "0.85rem", sm: "0.95rem" } }}>
             © {new Date().getFullYear()} Syed Ali Abbas.
           </Typography>
           <Typography
@@ -182,15 +191,16 @@ const Contact = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              gap: 2,
+              gap: { xs: 1.5, sm: 2 },
               flexWrap: "wrap",
+              fontSize: { xs: "0.85rem", sm: "0.95rem" },
             }}
           >
             Let’s build something great together
             <a
               href="mailto:aliabbasshah72@gmail.com?subject=Contact Me&body=Hi Syed Ali,"
               style={{
-                color: "#A4DB85",
+                color: "#38BDF8",
                 textDecoration: "none",
                 display: "flex",
                 alignItems: "center",
@@ -205,7 +215,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: "#A4DB85",
+                color: "#38BDF8",
                 textDecoration: "none",
                 display: "flex",
                 alignItems: "center",
@@ -220,7 +230,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: "#A4DB85",
+                color: "#38BDF8",
                 textDecoration: "none",
                 display: "flex",
                 alignItems: "center",
