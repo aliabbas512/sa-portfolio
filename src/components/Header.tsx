@@ -28,23 +28,25 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const variants: Variants = {
-  hidden: { opacity: 0, y: -30 },
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: -20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.35, ease: "easeOut" },
   },
 };
 
-const navItemVariants = {
-  hidden: { opacity: 0, x: 30 },
+const variants: Variants = {
+  hidden: { opacity: 0, x: 20 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: 0.3 + i * 0.15, duration: 0.4 },
+    transition: { delay: 0.15 + i * 0.08, duration: 0.25, ease: "easeOut" },
   }),
 };
+
+const accentPurple = "rgb(135, 80, 247)";
 
 const Header = () => {
   const theme = useTheme();
@@ -55,24 +57,25 @@ const Header = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: "#0F172A", // Dark blue-gray
-        color: "#F8FAFC", // Near white text
-        boxShadow: 3,
+        background: "linear-gradient(90deg, #0D021F 0%, #1A0B2E 100%)",
+        color: "#FFFFFF",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
         zIndex: 1100,
       }}
     >
-      <MotionToolbar initial="hidden" animate="visible" variants={variants}>
+      <MotionToolbar initial="hidden" animate="visible" variants={headerVariants}>
         <MotionTypography
           variant="h6"
           sx={{
             flexGrow: 1,
             fontWeight: "bold",
-            fontSize: isMobile ? "1rem" : "1.25rem",
-            color: "#38BDF8", // Accent color for name
+            fontSize: isMobile ? "1rem" : "1.5rem",
+            color: "#FFFFFF",
+            userSelect: "none",
           }}
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
         >
           Syed Ali Abbas
         </MotionTypography>
@@ -82,9 +85,16 @@ const Header = () => {
             <IconButton
               edge="end"
               onClick={() => setDrawerOpen(true)}
-              sx={{ color: "#38BDF8" }} // Accent color
+              sx={{
+                color: accentPurple,
+                "&:hover": {
+                  backgroundColor: "rgba(135, 80, 247, 0.15)",
+                  transition: "background-color 0.3s ease",
+                },
+              }}
+              aria-label="menu"
             >
-              <MenuIcon />
+              <MenuIcon fontSize="large" />
             </IconButton>
             <Drawer
               anchor="right"
@@ -92,8 +102,8 @@ const Header = () => {
               onClose={() => setDrawerOpen(false)}
               PaperProps={{
                 sx: {
-                  backgroundColor: "#1E293B", // Secondary background
-                  color: "#F8FAFC",
+                  backgroundColor: "#1A0B2E",
+                  color: "#FFFFFF",
                 },
               }}
             >
@@ -105,18 +115,17 @@ const Header = () => {
                       href={item.href}
                       onClick={() => setDrawerOpen(false)}
                       sx={{
+                        fontWeight: "bold",
+                        color: "#FFFFFF",
+                        textTransform: "uppercase",
                         "&:hover": {
-                          backgroundColor: "rgba(56, 189, 248, 0.1)", // Accent hover
+                          backgroundColor: "rgba(135, 80, 247, 0.15)",
+                          textDecoration: "underline",
+                          textDecorationColor: accentPurple,
                         },
                       }}
                     >
-                      <ListItemText
-                        primary={item.label}
-                        sx={{
-                          fontWeight: "bold",
-                          color: "#F8FAFC",
-                        }}
-                      />
+                      <ListItemText primary={item.label} />
                     </ListItemButton>
                   </ListItem>
                 ))}
@@ -129,17 +138,35 @@ const Header = () => {
               key={item.label}
               href={item.href}
               sx={{
-                color: "#F8FAFC",
+                color: "#FFFFFF",
                 fontWeight: "bold",
+                position: "relative",
+                paddingBottom: "4px",
+                fontSize: "1rem",
+                textTransform: "uppercase",
+                "&:before": {
+                  content: '""',
+                  position: "absolute",
+                  width: "0%",
+                  height: "2px",
+                  bottom: 0,
+                  left: 0,
+                  backgroundColor: accentPurple,
+                  transition: "width 0.2s ease-out",
+                },
                 "&:hover": {
-                  color: "#38BDF8",
-                  backgroundColor: "rgba(56, 189, 248, 0.1)",
+                  color: accentPurple,
+                  "&:before": {
+                    width: "100%",
+                  },
                 },
               }}
               custom={index}
               initial="hidden"
               animate="visible"
-              variants={navItemVariants}
+              variants={variants}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
             >
               {item.label}
             </MotionButton>

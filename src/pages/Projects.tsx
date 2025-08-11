@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
+import { Box, Typography, Grid, Card, CardContent, Divider } from "@mui/material";
 import { motion, Variants } from "framer-motion";
 
 const projectData = [
@@ -24,16 +24,18 @@ const variants: Variants = {
   }),
 };
 
+const accentPurple = "rgb(135, 80, 247)";
+
 const Projects: React.FC = () => {
   return (
     <Box
       id="projects"
       sx={{
-        backgroundColor: "#0F172A", // Match Qualifications background
-        minHeight: "120vh",
+        background: "linear-gradient(90deg, #0D021F 0%, #1A0B2E 100%)",
+        minHeight: { xs: "auto", md: "120vh" },
         py: { xs: 3, sm: 4, md: 5 },
         px: { xs: 2, sm: 4, md: 7 },
-        color: "#F8FAFC", // Base text color
+        color: "#FFFFFF",
       }}
     >
       <Typography
@@ -45,7 +47,7 @@ const Projects: React.FC = () => {
           px: { xs: 1, sm: 2, md: 3 },
           fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2rem" },
           fontFamily: "'Inter', sans-serif",
-          color: "#38BDF8", // Accent color same as Qualifications
+          color: "#FFFFFF",
         }}
         gutterBottom
       >
@@ -62,19 +64,24 @@ const Projects: React.FC = () => {
               viewport={{ once: true, amount: 0.3 }}
               variants={variants}
               style={{ flex: 1, display: "flex" }}
+              whileHover={{
+                scale: 1.03,
+                transition: { duration: 0.25 },
+              }}
             >
               <Card
                 sx={{
                   borderRadius: 4,
-                  backgroundColor: "#1E293B", // Card background same as Qualifications
-                  color: "#F8FAFC",
+                  backgroundColor: "#1E1033",
+                  color: "#FFFFFF",
                   display: "flex",
                   flexDirection: "column",
                   flex: 1,
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-6px)",
-                    boxShadow: "0 8px 20px rgba(56, 189, 248, 0.5)", // Neon blue glow
+                    boxShadow: "0 8px 20px rgba(135, 80, 247, 0.5)",
                   },
                 }}
                 elevation={3}
@@ -86,7 +93,7 @@ const Projects: React.FC = () => {
                     gutterBottom
                     sx={{
                       fontSize: { xs: "0.9rem", sm: "1rem" },
-                      color: "#F8FAFC",
+                      color: "#FFFFFF",
                       fontFamily: "'Roboto Mono', monospace",
                     }}
                   >
@@ -98,7 +105,7 @@ const Projects: React.FC = () => {
                     gutterBottom
                     sx={{
                       fontSize: { xs: "0.95rem", sm: "1.05rem" },
-                      color: "#38BDF8", // Accent color for title
+                      color: accentPurple,
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -110,7 +117,7 @@ const Projects: React.FC = () => {
                     gutterBottom
                     sx={{
                       fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      color: "#CBD5E1",
+                      color: "#FFFFFF",
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -121,7 +128,7 @@ const Projects: React.FC = () => {
                     fontWeight="medium"
                     sx={{
                       fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      color: "#94A3B8",
+                      color: "#FFFFFF",
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -133,6 +140,22 @@ const Projects: React.FC = () => {
           </Grid>
         ))}
       </Grid>
+      {/* Animated Divider */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={{ originX: 0 }}
+      >
+        <Divider
+          sx={{
+            mt: 15,
+            borderColor: accentPurple,
+            borderBottomWidth: 2,
+            opacity: 0.6,
+          }}
+        />
+      </motion.div>
     </Box>
   );
 };

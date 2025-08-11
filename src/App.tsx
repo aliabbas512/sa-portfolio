@@ -7,6 +7,8 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import Qualifications from "./pages/Qualifications";
+import ScrollToTopButton from "./components/Scroll2TopButton";
+// import ScrollToTopButton from "./components/Scroll2TopButton";
 
 const theme = createTheme({
   palette: {
@@ -61,6 +63,7 @@ const App = () => {
       <div id="skills"><Skills /></div>
       <div id="projects"><Projects /></div>
       <div id="contact"><Contact /></div>
+      <ScrollToTopButton />
     </ThemeProvider>
   );
 };

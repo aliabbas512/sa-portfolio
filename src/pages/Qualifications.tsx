@@ -1,6 +1,8 @@
 import React from "react";
-import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
+import { Box, Typography, Grid, Card, CardContent, Divider } from "@mui/material";
 import { motion, Variants } from "framer-motion";
+
+const accentPurple = "rgb(135, 80, 247)";
 
 const data = [
   { year: "2016", title: ".NET DEVELOPER INTERN", company: "PRAL - FBR", location: "Islamabad" },
@@ -29,11 +31,11 @@ const Qualifications: React.FC = () => {
     <Box
       id="qualifications"
       sx={{
-        backgroundColor: "#0F172A", // Match Home page background color
-        minHeight: "120vh",
+        background: "linear-gradient(90deg, #0D021F 0%, #1A0B2E 100%)", // Same gradient as Home page
+        minHeight: { xs: "auto", md: "120vh" },
         py: { xs: 3, sm: 4, md: 5 },
         px: { xs: 2, sm: 4, md: 7 },
-        color: "#F8FAFC", // Near white base text color consistent with Home page
+        color: "#FFFFFF", // Base text color
       }}
     >
       <Typography
@@ -45,7 +47,7 @@ const Qualifications: React.FC = () => {
           px: { xs: 1, sm: 2, md: 3 },
           fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2rem" },
           fontFamily: "'Inter', sans-serif",
-          color: "#38BDF8", // Accent color same as Home page
+          color: "#FFFFFF", // Accent color
         }}
         gutterBottom
       >
@@ -66,15 +68,18 @@ const Qualifications: React.FC = () => {
               <Card
                 sx={{
                   borderRadius: 4,
-                  backgroundColor: "#1E293B", // Slightly lighter dark for contrast, same as Home page card hover background
-                  color: "#F8FAFC",
+                  backgroundColor: "#1E1033", // Slightly lighter purple-tinted dark
+                  color: "#FFFFFF",
                   display: "flex",
                   flexDirection: "column",
                   flex: 1,
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  transition: "all 0.3s ease",
+                  border: `1px solid transparent`,
                   "&:hover": {
-                    transform: "translateY(-6px)",
-                    boxShadow: "0 8px 20px rgba(56, 189, 248, 0.5)", // Neon blue glow matching accent color
+                    transform: "scale(1.03)",
+                    borderColor: accentPurple,
+                    backgroundColor: "rgba(135, 80, 247, 0.15)",
+                    boxShadow: `0 4px 12px rgba(135, 80, 247, 0.4)`,
                   },
                 }}
                 elevation={3}
@@ -86,7 +91,7 @@ const Qualifications: React.FC = () => {
                     gutterBottom
                     sx={{
                       fontSize: { xs: "0.9rem", sm: "1rem" },
-                      color: "#F8FAFC", // Base text color
+                      color: "#FFFFFF",
                       fontFamily: "'Roboto Mono', monospace",
                     }}
                   >
@@ -98,7 +103,7 @@ const Qualifications: React.FC = () => {
                     gutterBottom
                     sx={{
                       fontSize: { xs: "0.95rem", sm: "1.05rem" },
-                      color: "#38BDF8", // Accent color for titles
+                      color: accentPurple,
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -110,7 +115,7 @@ const Qualifications: React.FC = () => {
                     gutterBottom
                     sx={{
                       fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      color: "#CBD5E1", // Muted secondary text
+                      color: "#FFFFFF",
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -121,7 +126,7 @@ const Qualifications: React.FC = () => {
                     fontWeight="medium"
                     sx={{
                       fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      color: "#94A3B8", // Muted tertiary text
+                      color: "#FFFFFF",
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -133,6 +138,22 @@ const Qualifications: React.FC = () => {
           </Grid>
         ))}
       </Grid>
+      {/* Animated Divider */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={{ originX: 0 }}
+      >
+        <Divider
+          sx={{
+            mt: 15,
+            borderColor: accentPurple,
+            borderBottomWidth: 2,
+            opacity: 0.6,
+          }}
+        />
+      </motion.div>
     </Box>
   );
 };
