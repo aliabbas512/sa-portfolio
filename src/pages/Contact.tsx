@@ -74,7 +74,6 @@ const Contact = () => {
               fontWeight: "bold",
               mb: { xs: 3, sm: 4 },
               fontSize: { xs: "1.8rem", sm: "2rem", md: "2.2rem" },
-              fontFamily: "'Inter', sans-serif",
             }}
             gutterBottom
           >
@@ -192,31 +191,93 @@ const Contact = () => {
           component="footer"
           sx={{
             mt: { xs: 6, sm: 8 },
-            py: { xs: 2, sm: 3 },
+            py: { xs: 3, sm: 4 },
             px: { xs: 2, sm: 4 },
-            textAlign: "center",
             backgroundColor: "#1E1033",
             color: "#FFFFFF",
             borderTop: "1px solid rgba(135, 80, 247, 0.4)",
             width: "100%",
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{ fontSize: { xs: "0.85rem", sm: "0.95rem" } }}
+          {/* Logo + Copyright in one line */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row", // Keep side-by-side
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 1.5,
+              mb: 2,
+              flexWrap: "wrap", // so it doesn't break on small screens
+            }}
           >
-            © {new Date().getFullYear()} Syed Ali Abbas.
-          </Typography>
+            <img
+              src="/images/logo.png"
+              alt="Logo"
+              style={{ height: 40, width: 40, borderRadius: "50%" }}
+            />
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: { xs: "1rem", sm: "1rem" },
+                whiteSpace: "nowrap", // Prevents line break between © and name
+              }}
+            >
+              © {new Date().getFullYear()} Syed Ali Abbas.
+            </Typography>
+          </Box>
+          {/* Links */}
+          <Box
+            sx={{
+              display: "flex",
+              gap: { xs: 2, sm: 3 },
+              flexWrap: "wrap",
+              justifyContent: "center",
+              mb: 2,
+            }}
+          >
+            <a
+              href="#home"
+              style={{ color: "#FFFFFF", textDecoration: "none" }}
+            >
+              Home
+            </a>
+            <a
+              href="#qualifications"
+              style={{ color: "#FFFFFF", textDecoration: "none" }}
+            >
+              Qualifications
+            </a>
+            <a
+              href="#skills"
+              style={{ color: "#FFFFFF", textDecoration: "none" }}
+            >
+              Skills
+            </a>
+            <a
+              href="#projects"
+              style={{ color: "#FFFFFF", textDecoration: "none" }}
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              style={{ color: "#FFFFFF", textDecoration: "none" }}
+            >
+              Contact
+            </a>
+          </Box>
+          {/* Contact Links */}
           <Typography
             variant="body2"
             sx={{
-              mt: 1,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               gap: { xs: 1.5, sm: 2 },
               flexWrap: "wrap",
               fontSize: { xs: "0.85rem", sm: "0.95rem" },
+              textAlign: "center",
             }}
           >
             Let’s build something great together

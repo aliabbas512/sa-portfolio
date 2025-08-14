@@ -8,7 +8,6 @@ import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import Qualifications from "./pages/Qualifications";
 import ScrollToTopButton from "./components/Scroll2TopButton";
-// import ScrollToTopButton from "./components/Scroll2TopButton";
 
 const theme = createTheme({
   palette: {
@@ -21,16 +20,13 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Inter', sans-serif",
-    // allVariants: {
-    //   color: "#002C77",
-    // },
+    fontFamily: "'Playfair Display', serif",
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Playfair Display', serif",
         },
         code: {
           fontFamily: "'Roboto Mono', monospace",

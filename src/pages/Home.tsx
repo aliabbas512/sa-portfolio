@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  Typography,
-  Grid,
-  Avatar,
-  Button,
-  Box,
-  Stack,
-} from "@mui/material";
+import { Typography, Grid, Avatar, Button, Box, Stack } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { motion } from "framer-motion";
 import DownloadIcon from "@mui/icons-material/Download";
+import { motion } from "framer-motion";
+import { keyframes } from "@mui/system";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,29 +12,61 @@ const fadeInUp = {
 };
 const accentPurple = "rgb(135, 80, 247)";
 
+// Animated "Hi" keyframes
+const hiWave = keyframes`
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  50% { transform: translate(-50%, -50%) rotate(2deg) scale(1.05); }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+`;
+
 const Home: React.FC = () => {
   return (
     <Box
       id="home"
       sx={{
+        position: "relative", // for background Hi
         background: "linear-gradient(90deg, #0D021F 0%, #1A0B2E 100%)",
         color: "#FFFFFF",
         minHeight: "100vh",
-        pt: { xs: 4, sm: 5 },
-        pb: { xs: 2, sm: 3 },
+        py: { xs: 3, sm: 5 }, // reduced top padding for better alignment
         px: { xs: 2, sm: 4, md: 7 },
         display: "flex",
-        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
+        overflow: "hidden",
       }}
     >
+      {/* Background Outlined "Hi" */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          fontSize: { xs: "6rem", md: "15rem" },
+          fontWeight: "bold",
+          color: "transparent", // No fill
+          WebkitTextStroke: "2px rgba(85, 0, 255, 0.1)", // Outline color
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+          zIndex: 0,
+          animation: `${hiWave} 6s ease-in-out infinite`,
+        }}
+      >
+        Hi
+      </Box>
+
+      {/* Main Grid for Avatar + About */}
       <Grid
         container
-        spacing={{ xs: 3, sm: 4 }}
+        spacing={{ xs: 4, md: 6 }}
         alignItems="center"
         justifyContent="center"
         sx={{
           maxWidth: "1200px",
           mx: "auto",
+          position: "relative",
+          zIndex: 1, // above the Hi
         }}
       >
         {/* Avatar Section */}
@@ -64,18 +90,21 @@ const Home: React.FC = () => {
                   },
                 }}
               />
-              <Box mt={{ xs: 3, sm: 4 }} textAlign="center">
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  sx={{
-                    fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Web Developer
-                </Typography>
-              </Box>
+              <Typography
+                component="h1"
+                sx={{
+                  mt: { xs: 3, sm: 4 },
+                  fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+                  fontWeight: "bold",
+                  lineHeight: 1.2,
+                  background: "linear-gradient(90deg, #8750F7, #BC6FF1)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  textAlign: "center",
+                }}
+              >
+                Web Developer
+              </Typography>
             </Box>
           </motion.div>
         </Grid>
@@ -86,8 +115,6 @@ const Home: React.FC = () => {
           xs={12}
           md={7}
           sx={{
-            ml: { xs: 0, md: 0 },
-            mt: { xs: 4, md: 0 },
             textAlign: { xs: "center", md: "left" },
           }}
         >
@@ -103,7 +130,6 @@ const Home: React.FC = () => {
               sx={{
                 display: { xs: "none", md: "block" },
                 fontSize: { md: "1.5rem", lg: "1.75rem" },
-                color: "#FFFFFF",
               }}
             >
               ABOUT ME
@@ -112,16 +138,13 @@ const Home: React.FC = () => {
               variant="body1"
               sx={{
                 lineHeight: 1.8,
-                fontSize: { xs: "0.95rem", sm: "1rem", md: "1.05rem" },
-                color: "#FFFFFF",
+                fontSize: { xs: "1.5rem", sm: "1.5rem", md: "1.05rem" },
               }}
             >
-              I am a web developer specializing in designing, building, testing,
-              and debugging modern web applications. Proficient in HTML, CSS,
-              Bootstrap, JavaScript, jQuery, React.js, Angular.js, Node.js,
-              Express.js, MongoDB, and OracleDB. Capable of working
-              independently on projects while being a reliable and collaborative
-              team member.
+              I am a web developer with expertise in designing, building, and improving 
+              modern web applications. Skilled in HTML, CSS, Bootstrap, JavaScript, jQuery, 
+              React.js, Angular.js, Node.js, Express.js, MongoDB, and OracleDB. Able to deliver 
+              quality results independently or as part of a team.
             </Typography>
             <Stack
               direction="row"
@@ -159,7 +182,6 @@ const Home: React.FC = () => {
                     fontSize: { xs: "0.8rem", sm: "0.9rem" },
                     color: "#FFFFFF",
                     borderColor: accentPurple,
-                    backgroundColor: "transparent",
                     transition: "all 0.25s ease-in-out",
                     "&:hover": {
                       backgroundColor: "rgba(135, 80, 247, 0.15)",
@@ -176,6 +198,62 @@ const Home: React.FC = () => {
           </motion.div>
         </Grid>
       </Grid>
+      {/* Stats Section */}
+      <Box
+        sx={{
+          py: { xs: 3, md: 4 }, // slightly reduced for tighter alignment
+          px: { xs: 2, sm: 4, md: 7 },
+          mt: { xs: 3, md: 5 },
+          maxWidth: "1200px",
+          mx: "auto",
+          position: "relative",
+          zIndex: 1, // above background
+        }}
+      >
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          {[
+            { value: "5", label: "Years of Experience" },
+            { value: "20+", label: "Projects Completed" },
+            { value: "10+", label: "Systems Deployed" },
+            // { value: "10+", label: "Technical Certifications" },
+            { value: "10+", label: "Technologies Mastered" },
+          ].map((stat, index) => (
+            <Grid item xs={6} md={3} key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                style={{ textAlign: "center" }}
+              >
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xs: "2rem", md: "2.5rem" },
+                    mb: 1,
+                  }}
+                >
+                  {stat.value}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: "0.85rem", md: "1rem" },
+                    color: "rgba(255,255,255,0.8)",
+                    lineHeight: 1.2,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "inline-block",
+                  }}
+                >
+                  {stat.label}
+                </Typography>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </Box>
   );
 };

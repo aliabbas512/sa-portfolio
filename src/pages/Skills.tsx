@@ -71,7 +71,6 @@ const Skills: React.FC = () => {
         sx={{
           py: { xs: 3, sm: 4, md: 5 },
           fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2rem" },
-          fontFamily: "'Inter', sans-serif",
           color: "#FFFFFF",
         }}
         gutterBottom
@@ -102,7 +101,6 @@ const Skills: React.FC = () => {
                 sx={{
                   fontSize: { xs: "0.9rem", sm: "1rem", md: "1.05rem" },
                   fontWeight: 500,
-                  fontFamily: "'Inter', sans-serif",
                   color: "#FFFFFF",
                 }}
               >

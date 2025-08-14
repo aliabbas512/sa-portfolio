@@ -46,7 +46,6 @@ const Projects: React.FC = () => {
           py: { xs: 3, sm: 4, md: 5 },
           px: { xs: 1, sm: 2, md: 3 },
           fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2rem" },
-          fontFamily: "'Inter', sans-serif",
           color: "#FFFFFF",
         }}
         gutterBottom
@@ -94,7 +93,6 @@ const Projects: React.FC = () => {
                     sx={{
                       fontSize: { xs: "0.9rem", sm: "1rem" },
                       color: "#FFFFFF",
-                      fontFamily: "'Roboto Mono', monospace",
                     }}
                   >
                     {project.year}
@@ -106,7 +104,6 @@ const Projects: React.FC = () => {
                     sx={{
                       fontSize: { xs: "0.95rem", sm: "1.05rem" },
                       color: accentPurple,
-                      fontFamily: "'Inter', sans-serif",
                     }}
                   >
                     {project.title}
@@ -118,7 +115,6 @@ const Projects: React.FC = () => {
                     sx={{
                       fontSize: { xs: "0.85rem", sm: "0.95rem" },
                       color: "#FFFFFF",
-                      fontFamily: "'Inter', sans-serif",
                     }}
                   >
                     {project.company}
@@ -129,7 +125,6 @@ const Projects: React.FC = () => {
                     sx={{
                       fontSize: { xs: "0.85rem", sm: "0.95rem" },
                       color: "#FFFFFF",
-                      fontFamily: "'Inter', sans-serif",
                     }}
                   >
                     {project.location}

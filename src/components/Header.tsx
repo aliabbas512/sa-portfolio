@@ -11,6 +11,7 @@ import {
   ListItemButton,
   ListItemText,
   useMediaQuery,
+  Box
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { motion, Variants } from "framer-motion";
@@ -64,21 +65,36 @@ const Header = () => {
       }}
     >
       <MotionToolbar initial="hidden" animate="visible" variants={headerVariants}>
-        <MotionTypography
-          variant="h6"
-          sx={{
-            flexGrow: 1,
-            fontWeight: "bold",
-            fontSize: isMobile ? "1rem" : "1.5rem",
-            color: "#FFFFFF",
-            userSelect: "none",
-          }}
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
-        >
-          Syed Ali Abbas
-        </MotionTypography>
+        {/* Logo + Name */}
+        <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+          <motion.img
+            src="/images/logo.png"
+            alt="Logo"
+            style={{
+              width: isMobile ? 32 : 42,
+              height: "auto",
+              marginRight: 10,
+              userSelect: "none",
+            }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35, delay: 0.05, ease: "easeOut" }}
+          />
+          <MotionTypography
+            variant="h1"
+            sx={{
+              fontSize: isMobile ? "1rem" : "1.5rem",
+              color: "#FFFFFF",
+              userSelect: "none",
+              textTransform: "uppercase",
+            }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
+          >
+            Syed Ali Abbas
+          </MotionTypography>
+        </Box>
 
         {isMobile ? (
           <>
@@ -115,7 +131,7 @@ const Header = () => {
                       href={item.href}
                       onClick={() => setDrawerOpen(false)}
                       sx={{
-                        fontWeight: "bold",
+                        fontWeight: 500,
                         color: "#FFFFFF",
                         textTransform: "uppercase",
                         "&:hover": {
@@ -139,7 +155,7 @@ const Header = () => {
               href={item.href}
               sx={{
                 color: "#FFFFFF",
-                fontWeight: "bold",
+                fontWeight: 500,
                 position: "relative",
                 paddingBottom: "4px",
                 fontSize: "1rem",
