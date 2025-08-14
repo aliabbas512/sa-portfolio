@@ -11,6 +11,8 @@ const projectData = [
   { year: "2025 - Present", title: "FMS UFONE", company: "PTML - Ufone", location: "Islamabad" },
 ];
 
+const accentPurple = "rgb(135, 80, 247)";
+
 const variants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
@@ -23,8 +25,6 @@ const variants: Variants = {
     },
   }),
 };
-
-const accentPurple = "rgb(135, 80, 247)";
 
 const Projects: React.FC = () => {
   return (
@@ -63,10 +63,6 @@ const Projects: React.FC = () => {
               viewport={{ once: true, amount: 0.3 }}
               variants={variants}
               style={{ flex: 1, display: "flex" }}
-              whileHover={{
-                scale: 1.03,
-                transition: { duration: 0.25 },
-              }}
             >
               <Card
                 sx={{
@@ -76,11 +72,13 @@ const Projects: React.FC = () => {
                   display: "flex",
                   flexDirection: "column",
                   flex: 1,
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  transition: "all 0.3s ease",
+                  border: `1px solid transparent`,
                   "&:hover": {
-                    transform: "translateY(-6px)",
-                    boxShadow: "0 8px 20px rgba(135, 80, 247, 0.5)",
+                    transform: "scale(1.03)",
+                    borderColor: accentPurple,
+                    backgroundColor: "rgba(135, 80, 247, 0.15)",
+                    boxShadow: `0 4px 12px rgba(135, 80, 247, 0.4)`,
                   },
                 }}
                 elevation={3}

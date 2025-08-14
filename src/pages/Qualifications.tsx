@@ -5,11 +5,11 @@ import { motion, Variants } from "framer-motion";
 const accentPurple = "rgb(135, 80, 247)";
 
 const data = [
-  { year: "2016", title: ".NET DEVELOPER INTERN", company: "PRAL - FBR", location: "Islamabad" },
+  { year: "2016", title: "DEVELOPMENT INTERN", company: "PRAL - FBR", location: "Islamabad" },
   { year: "2014 - 2018", title: "BACHELOR OF SCIENCE IN COMPUTER SCIENCE", company: "Preston University", location: "Islamabad" },
   { year: "2018 - 2021", title: "MASTER OF SCIENCE IN COMPUTER SCIENCE", company: "FAST University", location: "Islamabad" },
-  { year: "2021 - 2022", title: "WORDPRESS DEVELOPER", company: "Jashabhsoft", location: "Rawalpindi" },
-  { year: "2022 - 2023", title: "WEB DEVELOPER", company: "Deewar Studios", location: "Islamabad" },
+  { year: "2021 - 2022", title: "WEB DEVELOPER", company: "Jashabhsoft", location: "Rawalpindi" },
+  { year: "2022 - 2023", title: "MERN DEVELOPER", company: "Deewar Studios", location: "Islamabad" },
   { year: "2023 - Present", title: "EXECUTIVE CRM DEVELOPMENT", company: "PTML - Ufone", location: "Islamabad" },
 ];
 

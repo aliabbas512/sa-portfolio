@@ -14,16 +14,16 @@ const accentPurple = "rgb(135, 80, 247)";
 
 const skills = [
   { label: "Programming Skills", value: 70 },
-  { label: "HTML, CSS, Bootstrap", value: 80 },
-  { label: "Git, CI/CD Pipelines", value: 85 },
-  { label: "Presentation/Communication", value: 75 },
+  { label: "HTML, CSS, Bootstrap", value: 90 },
   { label: "JavaScript", value: 85 },
-  { label: "SQL/NoSQL Database", value: 80 },
-  { label: "Critical Thinking", value: 65 },
-  { label: "React.js & Angular.js", value: 75 },
+  { label: "React.js & Angular.js", value: 80 },
+  { label: "Express.js & Node.js", value: 75 },
+  { label: "SQL/NoSQL Database", value: 75 },
+  { label: "Git, CI/CD Pipelines", value: 70 },
+  { label: "Presentation/Communication", value: 85 },
+  { label: "Critical Thinking", value: 70 },
+  { label: "Problem Solving", value: 80 },
   { label: "WordPress Development", value: 70 },
-  { label: "Problem Solving", value: 78 },
-  { label: "Express.js & Node.js", value: 73 },
 ];
 
 const BorderLinearProgress = styled(LinearProgress)(() => ({

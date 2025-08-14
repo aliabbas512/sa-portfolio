@@ -138,21 +138,33 @@ const Home: React.FC = () => {
               variant="body1"
               sx={{
                 lineHeight: 1.8,
-                fontSize: { xs: "1.5rem", sm: "1.5rem", md: "1.05rem" },
+                fontSize: {
+                  xs: "1rem", // small devices (phones)
+                  sm: "1.15rem", // small tablets
+                  md: "1.25rem", // tablets
+                  lg: "1.35rem", // laptops
+                  xl: "1.45rem", // big desktops
+                },
               }}
             >
-              I am a web developer with expertise in designing, building, and improving 
-              modern web applications. Skilled in HTML, CSS, Bootstrap, JavaScript, jQuery, 
-              React.js, Angular.js, Node.js, Express.js, MongoDB, and OracleDB. Able to deliver 
-              quality results independently or as part of a team.
+              I am a web developer with expertise in designing, building, and
+              improving modern web applications. Skilled in HTML, CSS,
+              Bootstrap, JavaScript, jQuery, React.js, Angular.js, Node.js,
+              Express.js, MongoDB, and OracleDB. Able to deliver quality results
+              independently or as part of a team.
             </Typography>
             <Stack
               direction="row"
               spacing={2}
               mt={4}
               alignItems="center"
-              flexWrap="wrap"
               justifyContent={{ xs: "center", md: "flex-start" }}
+              flexWrap="nowrap" // 🔹 prevent line break
+              sx={{
+                overflowX: "auto", // 🔹 allow scroll if too wide
+                scrollbarWidth: "none", // hide scrollbar (Firefox)
+                "&::-webkit-scrollbar": { display: "none" }, // hide scrollbar (Chrome/Safari)
+              }}
             >
               {[
                 {
@@ -182,6 +194,7 @@ const Home: React.FC = () => {
                     fontSize: { xs: "0.8rem", sm: "0.9rem" },
                     color: "#FFFFFF",
                     borderColor: accentPurple,
+                    whiteSpace: "nowrap", // 🔹 keep label in one line
                     transition: "all 0.25s ease-in-out",
                     "&:hover": {
                       backgroundColor: "rgba(135, 80, 247, 0.15)",
